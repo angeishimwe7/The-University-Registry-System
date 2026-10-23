@@ -13,5 +13,7 @@ public class Main{
         manager.loadStudentsFromFile(file.getAbsolutePath());
         manager.DisplayStudents();
         manager.StudentsGroupedByMajor();
+        manager.AddStudent();
+
     }
 }

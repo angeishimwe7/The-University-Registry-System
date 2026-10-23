@@ -1,10 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 public class RegistryManager {
     private List<Student> students;
@@ -58,5 +53,32 @@ public class RegistryManager {
         for(Map.Entry<String, List<String>> entry : grouped.entrySet()){
             System.out.println(entry.getKey() + " :" + String.join(",", entry.getValue()));
         }
+    }
+
+    public void AddStudent() throws Exception{
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Adding New Student \n Enter your Details...");
+        System.out.println("Enter your Id: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter your Names: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter your GPA: ");
+        double gpa = scanner.nextDouble();
+        scanner.nextLine();
+
+        System.out.println("Enter your Major: ");
+        String major = scanner.nextLine();
+
+        FileWriter Writer = new FileWriter("Student.txt", true);
+        Writer.write(id + "," + name + "," + gpa + "," + major + "\n");
+        Writer.close();
+
+        System.out.println("Student added successfully.");
+
+        scanner.close();
     }
 }
